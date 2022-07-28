@@ -35,7 +35,21 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+
+// TODO rest
+$routes->get('todoList/', 'Todo::findAllTodo');
+$routes->get('todoList/(:num)', 'Todo::findByIdTodo/$1');
+$routes->post('todoList/', 'Todo::saveTodo');
+$routes->put('todoList/', 'Todo::updateTodo');
+$routes->delete('todoList/(:num)', 'Todo::deleteTodo/$1');
+
+// TASKS rest
+$routes->get('task/', 'Task::findAllTasks');
+$routes->get('task/(:num)', 'Task::findByIdTask/$1');
+$routes->get('task/taskByIdTodo/(:num)', 'Task::findByIdTodo/$1');
+$routes->post('task/', 'Task::saveTask');
+$routes->put('task/', 'Task::updateTask');
+$routes->delete('task/(:num)', 'Task::deleteTask/$1');
 
 /*
  * --------------------------------------------------------------------
