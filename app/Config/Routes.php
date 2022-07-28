@@ -50,6 +50,7 @@ $routes->get('task/taskByIdTodo/(:num)', 'Task::findByIdTodo/$1');
 $routes->post('task/', 'Task::saveTask');
 $routes->put('task/', 'Task::updateTask');
 $routes->put('task/concluded/', 'Task::concludedTasks');
+$routes->put('task/unconclude/', 'Task::unConcludeTask');
 $routes->delete('task/(:num)', 'Task::deleteTask/$1');
 
 /*

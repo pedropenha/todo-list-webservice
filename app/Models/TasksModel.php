@@ -26,4 +26,12 @@ class TasksModel extends Model
         ];
         return $this->db->table('tasks')->where('id', $idTask)->update($data);
     }
+
+    public function unConcludeTask($idTask){
+        $data = [
+          'concluded' => 0
+        ];
+
+        return $this->db->table('tasks')->where('id', $idTask)->update($data);
+    }
 }
