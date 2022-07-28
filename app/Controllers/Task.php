@@ -19,8 +19,8 @@ class Task extends ResourceController
                 ];
             }else{
                 $response = [
-                    'response' => 'error',
-                    'error' => $taskModel->errors()
+                    'response' => 'not found tasks',
+                    'tasks' => $data
                 ];
             }
         }catch (\Exception $e){
@@ -76,8 +76,8 @@ class Task extends ResourceController
                 ];
             }else{
                 $response = [
-                    'response' => 'error',
-                    'error' => $taskModel->errors()
+                    'response' => 'not found tasks',
+                    'tasks' => $data
                 ];
             }
         }catch (\Exception $e){
@@ -98,8 +98,8 @@ class Task extends ResourceController
 
         try{
             $newTask = [
-                'content' => $this->request->getPost('content'),
-                'idTodo' => $this->request->getPost('idTodo')
+                'content' => $this->request->getVar('content'),
+                'idTodo' => $this->request->getVar('idTodo')
             ];
 
             if($taskModel->insert($newTask)){
