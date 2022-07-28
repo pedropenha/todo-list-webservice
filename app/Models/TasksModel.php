@@ -8,7 +8,7 @@ class TasksModel extends Model
 {
     protected $table = 'tasks';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['content', 'idTodo'];
+    protected $allowedFields = ['content', 'idTodo', 'concluded'];
     protected $validationRules = [
         'content' => 'required|min_length[3]'
     ];
@@ -17,5 +17,13 @@ class TasksModel extends Model
     {
         return $this->db->table('tasks')->where('idTodo', $idTodo)->get()->getResult();
 
+    }
+
+    public function concludeTask($idTask)
+    {
+        $data = [
+          'concluded' => 1
+        ];
+        return $this->db->table('tasks')->where('id', $idTask)->update($data);
     }
 }

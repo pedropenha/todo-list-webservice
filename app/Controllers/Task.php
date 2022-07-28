@@ -190,4 +190,36 @@ class Task extends ResourceController
 
         return $this->response->setJSON($response);
     }
+
+    public function concludedTasks()
+    {
+        $taskModel = new \App\Models\TasksModel();
+
+        $id = $this->request->getVar('id');
+
+        try{
+            if($taskModel->concludeTask($id)){
+                $response = [
+                    'response' => 'success',
+                    'msg' => 'task concluded with success'
+                ];
+            }else {
+                $response = [
+                    'response' => 'error',
+                    'msg' => 'error on concluded task',
+                    'error' => $taskModel->errors()
+                ];
+            }
+        }catch (\Exception $e){
+            $response = [
+                'response' => 'error',
+                'msg' => 'error on concluded task',
+                'errors' => [
+                    'exception' => $e->getMessage()
+                ]
+            ];
+        }
+
+        return $this->response->setJSON($response);
+    }
 }
