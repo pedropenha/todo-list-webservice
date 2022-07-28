@@ -30,7 +30,7 @@ class Todo extends ResourceController
 
         try{
             $newTodo = [
-                'title' => $this->request->getPost('title')
+                'title' => $this->request->getVar('title')
             ];
 
             if($todoModel->save($newTodo)){
